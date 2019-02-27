@@ -1,0 +1,38 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start": "cd apps/demo-app && react-app-rewired start",
+    "build": "cd apps/demo-app && react-app-rewired build",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@storybook/addon-actions": "^4.1.13",
+    "@storybook/addon-console": "^1.1.0",
+    "@storybook/addon-info": "^4.1.13",
+    "@storybook/addon-links": "^4.1.13",
+    "@storybook/addon-notes": "^4.1.13",
+    "@storybook/addons": "^4.1.13",
+    "@storybook/react": "^4.1.13",
+    "babel-loader": "^8.0.5",
+    "customize-cra": "^0.2.11",
+    "lerna": "^3.4.0",
+    "react-app-rewired": "^2.1.0"
+  },
+  "dependencies": {
+    "@storybook/addon-options": "^4.1.13"
+  },
+  "workspaces": [
+    "apps/*",
+    "components/_examples_/*",
+    "components/2d-maps/*",
+    "components/3d-maps/*",
+    "components/charts/*",
+    "components/graph-renderers/*",
+    "components/media-viewers/*",
+    "components/object-renderers/*",
+    "components/search-interfaces/*"
+  ]
+}

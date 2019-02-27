@@ -1,0 +1,28 @@
+{
+  "homepage": ".",
+  "name": "demo-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@examples/demo-comp": "1.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "2.1.5",
+    "react-router-dom": "^4.3.1"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
