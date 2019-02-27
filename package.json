@@ -22,7 +22,8 @@
     "react-app-rewired": "^2.1.0"
   },
   "dependencies": {
-    "@storybook/addon-options": "^4.1.13"
+    "@storybook/addon-options": "^4.1.13",
+    "reactstrap": "^7.1.0"
   },
   "workspaces": [
     "apps/*",

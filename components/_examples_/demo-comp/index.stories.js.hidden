@@ -4,8 +4,8 @@ import { setAddon, storiesOf } from '@storybook/react';
 // import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
 
-import StoryWrapper from './StoryWrapper'
-import DemoComp from '../src/index'
+import StoryWrapper from '../../.storybook/StoryWrapper'
+import DemoComp from './src/index'
 
 const style = {
   border: "1px solid gainsboro",
