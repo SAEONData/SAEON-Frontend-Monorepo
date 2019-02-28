@@ -6,8 +6,9 @@ import { action } from '@storybook/addon-actions';
 
 import StoryWrapper from '../../.storybook/StoryWrapper'
 import MapServiceWrapper from './src/index'
+import { MapConfig } from './config/mapConfig'
 
-storiesOf('Map Service Wrapper', module)
+storiesOf('2D-Maps/Map Service Wrapper', module)
   .addParameters({
     info: {
       inline: true,
@@ -15,18 +16,28 @@ storiesOf('Map Service Wrapper', module)
       propTablesExclude: [MapServiceWrapper, StoryWrapper],
     }
   })
-  .add('With no props (default)', () =>
+  .add('Default state (no props)', () =>
     <MapServiceWrapper />,
     {
       info: {
         text: `
-        This shows the basic usage of the MapServiceWrapper component with no props (default state).
+      This shows the basic usage of the MapServiceWrapper component with no props (default state).
+      `
+      }
+    }
+  )
+  .add('Default state (with config)', () =>
+    <MapServiceWrapper mapConfig={MapConfig} />,
+    {
+      info: {
+        text: `
+        This shows the basic usage of the MapServiceWrapper component with just the mapConfig prop (default state with config).
         `
       }
     }
   )
   .add('With width and height set', () =>
-    <MapServiceWrapper width={520} height={280} />,
+    <MapServiceWrapper mapConfig={MapConfig} width={520} height={280} />,
     {
       info: {
         text: `
@@ -36,7 +47,7 @@ storiesOf('Map Service Wrapper', module)
     }
   )
   .add('With region filter', () =>
-    <MapServiceWrapper regionFilter={1} />,
+    <MapServiceWrapper mapConfig={MapConfig} regionFilter={1} />,
     {
       info: {
         text: `
@@ -49,7 +60,7 @@ storiesOf('Map Service Wrapper', module)
     }
   )
   .add('With multiple filters', () =>
-    <MapServiceWrapper regionFilter={1} typologyFilter={1} statusFilter={1} />,
+    <MapServiceWrapper mapConfig={MapConfig} regionFilter={1} typologyFilter={1} statusFilter={1} />,
     {
       info: {
         text: `
@@ -64,7 +75,7 @@ storiesOf('Map Service Wrapper', module)
     }
   )
   .add('With click event', () =>
-    <MapServiceWrapper onFeatureClick={action("data")} />,
+    <MapServiceWrapper mapConfig={MapConfig} onFeatureClick={action("data")} />,
     {
       info: {
         text: `

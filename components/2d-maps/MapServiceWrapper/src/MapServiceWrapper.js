@@ -1,17 +1,18 @@
 import React from 'react'
-import { MapConfig } from '../config/mapConfig'
+// import { MapConfig } from '../config/mapConfig'
 import { vmsBaseURL, mapServerBaseURL, mapServerURL } from '../config/serviceURLs'
-import './MapServiceWrapper.css'
+import '../css/MapServiceWrapper.css'
 
 // PROPS //
-// titleFilter - Title filter fo map (default: "")
-// statusFilter - Status filter for map (default: 0)
-// typologyFilter - Typology filter for map (default: 0)
-// regionFilter - Region filter for map (default: 0)
-// sectorFilter - Sector filter for map (default: 0)
-// width - Width of component (default: 100%)
-// height - Height of component (default: 550px)
-// onFeatureClick - Callback function for onMessage>>featureClick event
+// mapConfig - Map service configuration - REQUIRED
+// titleFilter - Title filter fo map (default: "") - OPTIONAL
+// statusFilter - Status filter for map (default: 0) - OPTIONAL
+// typologyFilter - Typology filter for map (default: 0) - OPTIONAL
+// regionFilter - Region filter for map (default: 0) - OPTIONAL
+// sectorFilter - Sector filter for map (default: 0) - OPTIONAL
+// width - Width of component (default: 100%) - OPTIONAL
+// height - Height of component (default: 550px) - OPTIONAL
+// onFeatureClick - Callback function for onMessage>>featureClick event - OPTIONAL
 
 class MapServiceWrapper extends React.Component {
 
@@ -26,7 +27,7 @@ class MapServiceWrapper extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("message", this.onMessage, )
+    window.removeEventListener("message", this.onMessage)
   }
 
   onMessage(event) {
@@ -36,7 +37,7 @@ class MapServiceWrapper extends React.Component {
       try {
         var data = JSON.parse(event.data)
         if (data.cmd == 'featureClick' && onFeatureClick) {
-          onFeatureClick(data)          
+          onFeatureClick(data)
         }
       }
       catch (ex) {
@@ -47,7 +48,12 @@ class MapServiceWrapper extends React.Component {
 
   buildMapConfig() {
 
-    let { titleFilter, statusFilter, typologyFilter, regionFilter, sectorFilter } = this.props
+    let { titleFilter, statusFilter, typologyFilter, regionFilter, sectorFilter, mapConfig } = this.props
+
+    //Abort if there's no mapConfig
+    if (!mapConfig) {
+      return []
+    }
 
     //Fix undefined
     titleFilter = titleFilter ? titleFilter : ""
@@ -55,8 +61,6 @@ class MapServiceWrapper extends React.Component {
     typologyFilter = typologyFilter ? typologyFilter : 0
     regionFilter = regionFilter ? regionFilter : 0
     sectorFilter = sectorFilter ? sectorFilter : 0
-
-    let mapConfig = MapConfig
 
     //Process filters
     if (parseInt(regionFilter) > 0 || parseInt(statusFilter) > 0 || parseInt(typologyFilter) > 0 ||
@@ -139,12 +143,12 @@ class MapServiceWrapper extends React.Component {
 
   render() {
 
-    let { height, width } = this.props
-    let mapConfig = this.buildMapConfig()
-    let mapSrc = `${mapServerURL}?conf=${mapConfig}`
+    let { height, width, mapConfig } = this.props
+    let mapConfigFinal = this.buildMapConfig()
+    let mapSrc = `${mapServerURL}?conf=${mapConfigFinal}`
 
     //Fix undefined
-    height = height ? height : "550px"
+    height = height ? height : "500px"
     width = width ? width : ""
 
     //Fix format
@@ -157,9 +161,19 @@ class MapServiceWrapper extends React.Component {
 
     return (
       <div className="map-container" style={{ height, width }}>
-        <iframe className="map-frame"
-          src={mapSrc}
-        />
+
+        {
+          !mapConfig &&
+          <h2><i>No map-config provided</i></h2>
+        }
+
+        {
+          mapConfig &&
+          <iframe className="map-frame"
+            src={mapSrc}
+          />
+        }
+
       </div>
     )
   }

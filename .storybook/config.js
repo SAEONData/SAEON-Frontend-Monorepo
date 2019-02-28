@@ -14,14 +14,14 @@ addDecorator(
     name: 'Components',
     //theme: themes.dark,
     showAddonPanel: false,
-    sortStoriesByKind: true
+    // sortStoriesByKind: true
   })
 );
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../components', true, /.stories.js$/);
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  req.keys().sort().forEach(filename => req(filename));
 }
 
 configure(loadStories, module);

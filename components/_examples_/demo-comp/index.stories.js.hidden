@@ -13,7 +13,7 @@ const style = {
   backgroundColor: "whitesmoke"
 }
 
-storiesOf('DemoComp', module)
+storiesOf('Examples/DemoComp', module)
   .addParameters({
     info: {
       inline: true,
