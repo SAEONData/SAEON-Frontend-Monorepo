@@ -16,16 +16,16 @@ storiesOf('2D-Maps/Map Service Wrapper', module)
       propTablesExclude: [MapServiceWrapper, StoryWrapper],
     }
   })
-  .add('Default state (no props)', () =>
-    <MapServiceWrapper />,
-    {
-      info: {
-        text: `
-      This shows the basic usage of the MapServiceWrapper component with no props (default state).
-      `
-      }
-    }
-  )
+  // .add('Default state (no props)', () =>
+  //   <MapServiceWrapper />,
+  //   {
+  //     info: {
+  //       text: `
+  //     This shows the basic usage of the MapServiceWrapper component with no props (default state).
+  //     `
+  //     }
+  //   }
+  // )
   .add('Default state (with config)', () =>
     <MapServiceWrapper mapConfig={MapConfig} />,
     {
