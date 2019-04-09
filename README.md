@@ -6,6 +6,15 @@ Here we'll develop shared components and applications for FRAME 1, 2 and 3.
 ## Architecture: 
 A monorepo with Lerna, Yarn workspaces, create-react-app (with hot-module-replacement) and Storybook
 
+## Getting up and Running:
+Make sure that you have yarn, storybook and react-app-rewired installed globally on your system
+
+Clone this repository onto your local machine
+
+CD into the root folder and run 'yarn install'
+run 'yarn start' for react apps 
+run 'yarn storybook' for storybook
+
 #### A nice guide on how to setup a monorepo (for background): https://f1lt3r.io/guide-multi-react-app-monorepo-with/
 
 ## Structure of this monorepo:
